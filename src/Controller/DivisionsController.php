@@ -54,4 +54,23 @@ class DivisionsController extends AppController
 
         $this->set(compact('divi'));
     }
+
+    public function view($id = null)
+    {
+        $division = $this->Divisions->get($id, [
+            'contain' => []
+        ]);
+
+        $this->set(compact('division'));
+    }
+
+    public function delete($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $division = $this->Divisions->get($id);
+
+        if ($this->Divisions->delete($division)) {
+            return $this->redirect(['action' => 'index']);
+        }
+    }
 }

@@ -13,7 +13,13 @@
                 <td><?php echo $value->id; ?></td>
                 <td><?php echo $value->division_code; ?> </td>
                 <td><?php echo $value->name; ?> </td>
-                <td><?php echo $this->Html->link(__("Edit"), ['action' => 'edit', $value->id]); ?> </td>
+                <td><?php echo $this->Html->link(__("Edit"), ['action' => 'edit', $value->id]); ?> |
+                    <?php echo $this->Html->link(__("View"), ['action' => 'view', $value->id]); ?> |
+                    <?php echo $this->Form->postlink(
+                            __("Delete"),
+                            ['action' => 'delete', $value->id],
+                            ['confirm' => 'Are you sure to delete #{0}', $value->id]
+                        ); ?> </td>
             </tr>
         <?php } ?>
     </tbody>
